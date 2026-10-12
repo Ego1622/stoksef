@@ -1,0 +1,2 @@
+# stoksef
+akıllı market projesi
