@@ -1,3 +1,4 @@
 streamlit
-supbase
 requests
+beautifulsoup4
+pandas
