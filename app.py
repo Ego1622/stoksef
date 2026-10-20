@@ -433,7 +433,6 @@ if st.button("🚨 Hesaptan Çık / Tüm Verileri Sıfırla"):
 if secenek == "🛒 Akıllı Sepet":
     st.title("🛒 Akıllı Sepet")
     if st.session_state.sepet:
-        # Hepsini Çıkart Butonu
         if st.button("🗑️ Hepsini Çıkart"):
             st.session_state.sepet = []
             if 'evde_var_olanlar' in st.session_state:
