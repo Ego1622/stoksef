@@ -418,7 +418,7 @@ else:
             st.session_state.kayit_adim = "profil_tipi"
             st.rerun()
 
- if st.button("🚨 Hesaptan Çık / Tüm Verileri Sıfırla"):
+    if st.button("🚨 Hesaptan Çık / Tüm Verileri Sıfırla"):
     st.session_state.clear()
     st.rerun()
 
