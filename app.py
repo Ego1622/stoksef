@@ -422,7 +422,7 @@ if st.button("🚨 Hesaptan Çık / Tüm Verileri Sıfırla"):
      st.session_state.clear()
      st.rerun()
 
-if st.button("🚨 Hesaptan Çık / Tüm Verileri Sıfırla"):
+if st.button("🚨 Hesaptan Çık / Tüm Verileri Sıfırla" , key="hesaptan_cik_ana_buton"):
     st.session_state.clear()
     st.rerun()
 
