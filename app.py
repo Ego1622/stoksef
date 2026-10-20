@@ -460,7 +460,7 @@ if secenek == "🛒 Akıllı Sepet":
 if secenek == "🛒 Akıllı Sepet":
     st.title("🛒 Akıllı Sepet")
     if st.session_state.sepet:
-        if st.button("🗑️ Hepsini Çıkart"):
+        if st.button("🗑️ Hepsini Çıkart",key=hepsini_cikart_bnt"):
             st.session_state.sepet = []
             if 'evde_var_olanlar' in st.session_state:
                 st.session_state.evde_var_olanlar = []
