@@ -422,6 +422,10 @@ if st.button("🚨 Hesaptan Çık / Tüm Verileri Sıfırla"):
      st.session_state.clear()
      st.rerun()
 
+if st.button("🚨 Hesaptan Çık / Tüm Verileri Sıfırla"):
+    st.session_state.clear()
+    st.rerun()
+
 # 6. AKILLI SEPET
 if secenek == "🛒 Akıllı Sepet":
     st.title("🛒 Akıllı Sepet")
