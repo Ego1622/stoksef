@@ -422,8 +422,15 @@ else:
             st.session_state.clear()
             st.rerun()
 
-   # 6. AKILLI SEPET
-elif secenek == "🛒 Akıllı Sepet":
+   st.session_state.clear()
+        st.rerun()
+
+if st.button("🚨 Hesaptan Çık / Tüm Verileri Sıfırla"):
+    st.session_state.clear()
+    st.rerun()
+
+# 6. AKILLI SEPET
+if secenek == "🛒 Akıllı Sepet":
     st.title("🛒 Akıllı Sepet")
     if st.session_state.sepet:
         # Hepsini Çıkart Butonu
@@ -439,7 +446,6 @@ elif secenek == "🛒 Akıllı Sepet":
             with col1:
                 st.write(f"***{item['product_name']}***")
                 st.caption(f"{item['market_name']} - {item['price']} TL")
-                # Ürün adeti (Eğer sözlükte 'adet' yoksa varsayılan 1 yazar)
                 adet = item.get('adet', 1)
                 st.caption(f"📦 Adet: {adet}")
             with col2:
