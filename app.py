@@ -422,26 +422,38 @@ else:
             st.session_state.clear()
             st.rerun()
 
-    # 6. AKILLI SEPET
-    elif secenek == "🛒 Akıllı Sepet":
-        st.title("🛒 Akıllı Sepet")
-        if st.session_state.sepet:
-            toplam_tutar = 0
-            for i, item in enumerate(st.session_state.sepet):
-                col1, col2, col3 = st.columns([3, 1, 1])
-                with col1: 
-                    st.write(f"**{item['product_name']}**")
-                    st.caption(f"{item['market_name']} - {item['price']} TL")
-                with col2:
-                    if st.button("Evde Var", key=f"evde_{i}"):
-                        if item not in st.session_state.evde_var_olanlar:
-                            st.session_state.evde_var_olanlar.append(item)
-                with col3:
-                    if st.button("Çıkar", key=f"cikar_{i}"):
-                        st.session_state.sepet.pop(i)
-                        st.rerun()
-                if item not in st.session_state.evde_var_olanlar:
-                    toplam_tutar += item['price']
-            st.metric(label="Net Sepet Maliyeti", value=f"{toplam_tutar:.2f} TL")
-        else:
-            st.info("Sepetiniz boş.")
+   # 6. AKILLI SEPET
+elif secenek == "🛒 Akıllı Sepet":
+    st.title("🛒 Akıllı Sepet")
+    if st.session_state.sepet:
+        # Hepsini Çıkart Butonu
+        if st.button("🗑️ Hepsini Çıkart"):
+            st.session_state.sepet = []
+            if 'evde_var_olanlar' in st.session_state:
+                st.session_state.evde_var_olanlar = []
+            st.rerun()
+
+        toplam_tutar = 0
+        for i, item in enumerate(st.session_state.sepet):
+            col1, col2, col3 = st.columns((3, 1, 1))
+            with col1:
+                st.write(f"***{item['product_name']}***")
+                st.caption(f"{item['market_name']} - {item['price']} TL")
+                # Ürün adeti (Eğer sözlükte 'adet' yoksa varsayılan 1 yazar)
+                adet = item.get('adet', 1)
+                st.caption(f"📦 Adet: {adet}")
+            with col2:
+                if st.button("Evde Var", key=f"evde_{i}"):
+                    if item not in st.session_state.evde_var_olanlar:
+                        st.session_state.evde_var_olanlar.append(item)
+            with col3:
+                if st.button("Çıkar", key=f"cikar_{i}"):
+                    st.session_state.sepet.pop(i)
+                    st.rerun()
+            
+            if item not in st.session_state.evde_var_olanlar:
+                toplam_tutar += item['price'] * item.get('adet', 1)
+                
+        st.metric(label="Net Sepet Maliyeti", value=f"{toplam_tutar:.2f} TL")
+    else:
+        st.info("Sepetiniz boş.")
